@@ -15,6 +15,21 @@ const API_OPTIONS = {
 const App = () => {
 
   const [searchTerm, setSearchTerm]= useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  //make a request to the backend to fetch the movies
+
+  const fetchmovies = async () => {
+    try{
+
+    }
+    catch(error){
+      console.error(`Error fetching movies: ${error}`);
+      setErrorMessage('Error Fetching movies. Please try again later')
+      
+    }
+  }
+
   useEffect(()=>{
     
   },[])
@@ -26,8 +41,14 @@ const App = () => {
         <header>
           <img src='./hero-img.png' alt='hero Banner'/>
           <h1>Find <span className='text-gradient'>Movies</span> you'll enjoy without the hassle</h1>
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+
+        <section className='all-movies'>
+          <h2>All Movies</h2>
+          {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
+        </section>
+        
         
       </div>
     </main>
