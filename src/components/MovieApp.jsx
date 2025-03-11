@@ -10,11 +10,11 @@ const MovieApp = ({movie : {title, vote_average, poster_path, release_date} }) =
         <div className='mt-4'>
             <p className='text-white'>{title}</p>
             <div className='content'>
-                <div className='rating'>
+                <div className='rating  flex items-center space-x-2'>
                     <img src="Rating.svg" alt="Star Icon" />
-                    <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
+                    <p className='text-white'>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
 
-{/* stuck at vote average not displaying */}
+{/* stuck at vote average not s */}
                 </div>
                 
                 <span>•</span>
