@@ -4,7 +4,7 @@ const MovieApp = ({movie : {title, vote_average,original_language,  poster_path,
   return (
     <div>
         <div className='movie-card'>
-            <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : `/no-movie.png`}  alt="" />
+            <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : `/No-Poster.png`}  alt="" />
         </div>
         
         <div className='mt-4'>
