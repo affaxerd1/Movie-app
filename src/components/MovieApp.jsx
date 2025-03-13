@@ -1,8 +1,12 @@
 import React from 'react'
 
+//movie component
+
 const MovieApp = ({movie : {title, vote_average,original_language,  poster_path, release_date} }) => {
   return (
     <div>
+
+        
         <div className='movie-card'>
             <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : `/No-Poster.png`}  alt="" />
         </div>
