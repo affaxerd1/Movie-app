@@ -3,6 +3,10 @@ import Search from "./components/search.jsx"
 import Spinner from './components/spinner.jsx';
 import MovieApp from './components/MovieApp.jsx';
 import { useDebounce } from 'react-use';
+import { updateSearchCount } from './appwrite.js';
+
+
+
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -57,6 +61,7 @@ const App = () => {
       }
 
       setMovieList(data.results || []);
+      updateSearchCount();
       
 
     }
