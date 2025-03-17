@@ -3,7 +3,7 @@ import Search from "./components/search.jsx"
 import Spinner from './components/spinner.jsx';
 import MovieApp from './components/MovieApp.jsx';
 import { useDebounce } from 'react-use';
-import { updateSearchCount } from './appwrite.js';
+import { getTrendingMovies, updateSearchCount } from './appwrite.js';
 
 
 
@@ -26,6 +26,7 @@ const App = () => {
   const [movieList, setMovieList]=useState([]);
   const [isLoading, setIsLoading]= useState(false)
   const [debauncedSearchTerm, setDebaouncedSearchTerm] = useState('')
+  consr=t [getTrendingMovies, setTrendingMovies]=useState([]);
 
   useDebounce(()=> setDebaouncedSearchTerm(searchTerm), 5000, [searchTerm])
   //make a request to the backend to fetch the movies
@@ -77,9 +78,26 @@ const App = () => {
     }
   }
 
+
+  // load trending movies
+  const loadTrendingMovies = async ()=> {
+    try {
+      const movies = getTrendingMovies()
+      setTrendingMovies(movies)
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   useEffect(()=>{
     fetchmovies(debauncedSearchTerm)
   },[debauncedSearchTerm])
+
+
+  useEffect(()=> {
+    loadTrendingMovies();
+  }, [])
   return (
     <main>
       <div className='pattern'/>
