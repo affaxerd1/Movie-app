@@ -26,7 +26,7 @@ const App = () => {
   const [movieList, setMovieList]=useState([]);
   const [isLoading, setIsLoading]= useState(false)
   const [debauncedSearchTerm, setDebaouncedSearchTerm] = useState('')
-  consr=t [getTrendingMovies, setTrendingMovies]=useState([]);
+  const [trendingMovies, setTrendingMovies]=useState([]);
 
   useDebounce(()=> setDebaouncedSearchTerm(searchTerm), 5000, [searchTerm])
   //make a request to the backend to fetch the movies
@@ -109,8 +109,23 @@ const App = () => {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
+        {trendingMovies.length > 0 && (
+          <section className='trending'>
+            <h2>Trending Movies</h2>
+
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={movie.$id}>
+                  <p> {index +1}</p>
+                </li>
+              ))}
+
+            </ul>
+          </section>
+        )}
+
         <section className='all-movies'>
-          <h2 className='mt-[40px]'>All Movies</h2>
+          <h2>All Movies</h2>
           
           {isLoading ? (
             <Spinner/>
